@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <title>WaybackX</title>
+</head>
+<body>
+    <header>
+        <section class="banner">
+            <div class="wayback">
+              <img src="img/Internet Archive Logo.png" alt="Internet Archive logo">
+            </div>
+          </section>
+          <nav class="main-nav">
+            <ul>
+                <li><a href="/">Home</a></li>
+              <li><a href="http://web.archive.org/" class="">Wayback Archive</a></li>
+              <li><a href="about.html">About the project</a></li>
+            </ul>
+          </nav>
+    </header>
+    <main>
+        <article>
+            <div class="wayback-logo">
+                <img src="img/Wayback_Machine_logo_2010.png" alt="WaybackX logo" >
+                <p>Welcome to WaybackX. </br>
+                    This is a project to extend the functionality of Wayback Machine. <br>
+                    Below some random pages were generated for you. <br>
+                    Have fun exploring! :)</p>
+            </div>
+            <div class="links">
+                <ul class="links" id="links" th:each="url: ${urls}">
+                    <li>
+                        <a th:href="@{/request/} + ${url.getDomain()}" th:text="${url.getName()}"></a>
+                        <h4 th:text="${url.getDomain()}"></h4>
+                        <p th:text="${url.getDescription()}"></p>
+                    </li></br>
+                </ul>
+            </div>
+        </article>
+    </main>
+    <footer>
+        <p class="copyright">© Internet Archive 2021</p>
+      </footer>
+</body>
+</html>
